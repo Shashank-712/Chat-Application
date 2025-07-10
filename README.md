@@ -4,6 +4,14 @@ A basic real-time chat application built with **Django**, **Channels**, **Redis*
 Users can join chat rooms, send and receive messages instantly, and experience WebSocket-based communication in action.
 
 ---
+# 💬 Real-Time Chat Application
+
+[![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)](https://www.python.org/)
+[![Django](https://img.shields.io/badge/Django-5.2-green?logo=django)](https://www.djangoproject.com/)
+[![Channels](https://img.shields.io/badge/Channels-4.0-blueviolet?logo=django)](https://channels.readthedocs.io/)
+[![Redis](https://img.shields.io/badge/Redis-6.2-red?logo=redis)](https://redis.io/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14-blue?logo=postgresql)](https://www.postgresql.org/)
+[![WebSockets](https://img.shields.io/badge/WebSockets-Enabled-orange)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
 
 ## 🚀 Features
 
