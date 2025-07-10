@@ -102,4 +102,15 @@ Persist chat messages to DB
 Add private messaging
 
 Improve frontend with Tailwind or React
+
+Persist chat messages to DB
+
+Add private messaging
+
+Improve frontend with Tailwind or React
 ```
+🙌 Author Made with 💻 by Shashank Rawat👹👉 🔗 github.com/Shashank-712
+
+
+
+
