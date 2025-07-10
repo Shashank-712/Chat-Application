@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat Room</title>
+</head>
+<body>
+  <h2>Chat Room: <span id="room-name"></span></h2>
+
+  <div id="chat-log" style="border:1px solid #ccc; height:300px; overflow:auto;"></div>
+  <br>
+  <input id="chat-message-input" type="text" size="100">
+  <button id="chat-message-submit">Send</button>
+
+  <script>
+    let roomName = prompt("Enter room name:");
+    
+    if (!roomName || roomName.trim() === "") {
+      alert("Room name is required!");
+      location.reload();  // restart prompt
+    }
+
+    roomName = roomName.trim();  // clean input
+    document.getElementById("room-name").textContent = roomName;
+
+    const chatSocket = new WebSocket(
+      `ws://${window.location.host}/ws/chat/${roomName}/`
+    );
+
+    chatSocket.onopen = function () {
+      console.log("WebSocket connected to room:", roomName);
+    };
+
+    chatSocket.onmessage = function (e) {
+      const data = JSON.parse(e.data);
+      const chatLog = document.getElementById("chat-log");
+      chatLog.innerHTML += `<p>${data.message}</p>`;
+      chatLog.scrollTop = chatLog.scrollHeight;
+    };
+
+    chatSocket.onclose = function (e) {
+      console.error("WebSocket closed unexpectedly");
+      alert("WebSocket disconnected. Refresh the page.");
+    };
+
+    document.getElementById("chat-message-submit").onclick = function () {
+      const input = document.getElementById("chat-message-input");
+      const message = input.value.trim();
+      if (message === "") return;
+
+      if (chatSocket.readyState === WebSocket.OPEN) {
+        chatSocket.send(JSON.stringify({ message }));
+        input.value = '';
+      } else {
+        alert("WebSocket is not open. Please refresh.");
+      }
+    };
+  </script>
+</body>
+</html>
